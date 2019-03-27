@@ -8,7 +8,8 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<mvc:annotation-driven />
-	<context:component-scan base-package="com.fairfield.chalktalk" />
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<context:component-scan base-package="com.fairfield.chalktalk.*" />
 	<context:property-placeholder location="classpath:config/properties/jdbc.properties"/>
 	
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -45,8 +46,71 @@
 			</props>
 		</property>
 	</bean>
+	
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
+	<!-- application dao beans starts here -->
+	<bean id="addressDao" class="com.fairfield.chalktalk.daoImpl.AddressDaoImpl" autowire="byType">
+	    <property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="adminDao" class="com.fairfield.chalktalk.daoImpl.AdminDaoImpl" autowire="byType">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="companyStageDao" class="com.fairfield.chalktalk.daoImpl.CompanyStageDaoImpl" autowire="byType">
+	    <property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="countyDao" class="com.fairfield.chalktalk.daoImpl.CountyDaoImpl" autowire="byType">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="feedbackDao" class="com.fairfield.chalktalk.daoImpl.FeedbackDaoImpl" autowire="byType">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="industryCategoryDao" class="com.fairfield.chalktalk.daoImpl.IndustryCategoryDaoImpl" autowire="byType">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="meetingsDao" class="com.fairfield.chalktalk.daoImpl.MeetingsDaoImpl" autowire="byType">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="meetUpLocationDao" class="com.fairfield.chalktalk.daoImpl.MeetUpLocationDaoImpl" autowire="byType">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="menteeDao" class="com.fairfield.chalktalk.daoImpl.MenteeDaoImpl" autowire="byType">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="mentorDao" class="com.fairfield.chalktalk.daoImpl.MentorDaoImpl" autowire="byType">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="mentorSpecializationDao" class="com.fairfield.chalktalk.daoImpl.MentorSpecializationDaoImpl" autowire="byType">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="momDao" class="com.fairfield.chalktalk.daoImpl.MoMDaoImpl" autowire="byType" >
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="startUpApplicationDao" class="com.fairfield.chalktalk.daoImpl.StartUpApplicationDaoImpl" autowire="byType">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="stateDao" class="com.fairfield.chalktalk.daoImpl.StateDaoImpl" autowire="byType">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- application dao beans ends here -->
+	
+	<!-- application service beans creation starts here -->
+	<bean id="mentorService" class="com.fairfield.chalktalk.serviceImpl.MentorServiceImpl" autowire="byType">
+		<property name="mentorDAO" ref="mentorDao" />
+	</bean>
+	<!-- application service beans creation ends here -->
+	
+	<!-- datautil bean starts here -->
+	<bean id="loadDataUtil" class="com.fairfield.chalktalk.utility.LoadDataUtil" autowire="byType" init-method="readExcelSheetData">
+		 <property name="industryCategoryDaoImpl" ref="industryCategoryDao" />
+		 <property name="mentorSpecializationDaoImpl" ref="mentorSpecializationDao" />
+		 <property name="stateDaoImpl" ref="stateDao" />
+		 <property name="countyDaoImpl" ref="countyDao" />
+		 <property name="companyStageDaoImpl" ref="companyStageDao" />
+		 <property name="fileName" value="D:/Rinku/MentorMenteeProject/preloadValues.xlsx" />
+	</bean>
+	<!-- datautil bean ends here -->
 </beans>

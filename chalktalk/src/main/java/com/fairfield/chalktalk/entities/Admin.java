@@ -3,6 +3,8 @@
  */
 package com.fairfield.chalktalk.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -18,8 +20,12 @@ import javax.persistence.Table;
 @AttributeOverrides({
     @AttributeOverride(name="userId", column=@Column(name="adminId")),
 })
-public class Admin extends User{
+public class Admin extends User implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Column
 	private String name;
 	@Column
@@ -27,6 +33,7 @@ public class Admin extends User{
 	@Column
 	private String emailId;
 	
+	public Admin() {}
 	/**
 	 * @param userId
 	 * @param userName
@@ -37,7 +44,7 @@ public class Admin extends User{
 	 * @param phoneNum
 	 * @param emailId
 	 */
-	public Admin(String userId, String userName, String password, String userType, String permissions, String name,
+	public Admin(long userId, String userName, String password, String userType, String permissions, String name,
 			String phoneNum, String emailId) {
 		super(userId, userName, password, userType, permissions);
 		this.name = name;

@@ -3,8 +3,12 @@
  */
 package com.fairfield.chalktalk.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,16 +18,23 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class MentorSpecialization {
+public class MentorSpecialization implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
-	private String id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long id;
 	@Column
 	private String aPSIndustry;
 	@Column
 	private String specialization;
 	@Column(name = "`order`") 
 	private int order;
+	
+	public MentorSpecialization() {}
 
 	/**
 	 * @param id
@@ -31,9 +42,22 @@ public class MentorSpecialization {
 	 * @param specialization
 	 * @param order
 	 */
-	public MentorSpecialization(String id, String aPSIndustry, String specialization, int order) {
+	public MentorSpecialization(long id, String aPSIndustry, String specialization, int order) {
 		super();
 		this.id = id;
+		this.aPSIndustry = aPSIndustry;
+		this.specialization = specialization;
+		this.order = order;
+	}
+	
+	/**
+	 * 
+	 * @param aPSIndustry
+	 * @param specialization
+	 * @param order
+	 */
+	public MentorSpecialization(String aPSIndustry, String specialization, int order) {
+		super();
 		this.aPSIndustry = aPSIndustry;
 		this.specialization = specialization;
 		this.order = order;
@@ -42,14 +66,14 @@ public class MentorSpecialization {
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

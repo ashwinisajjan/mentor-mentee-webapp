@@ -3,6 +3,7 @@
  */
 package com.fairfield.chalktalk.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +28,12 @@ import javax.persistence.Table;
 @AttributeOverrides({
     @AttributeOverride(name="userId", column=@Column(name="menteeId")),
 })
-public class Mentee extends User{
+public class Mentee extends User implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Column
 	private String menteeName;
@@ -48,13 +54,15 @@ public class Mentee extends User{
 	@Column
 	private boolean startUpExp;
 	
-	@JoinColumn(name = "mentorId")
+	@JoinColumn(name = "mentorId", referencedColumnName="mentorId", insertable=false, updatable=false)
 	@ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
 	private Mentor mentor;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "applicationOwner")
-	private List<StartUpApplication> application;
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "applicationId")
+	private List<StartUpApplication> applications;
 
+	public Mentee() {}
 	/**
 	 * @param userId
 	 * @param userName
@@ -70,7 +78,7 @@ public class Mentee extends User{
 	 * @param mentor
 	 * @param application
 	 */
-	public Mentee(String userId, String userName, String password, String userType, String permissions,
+	public Mentee(long userId, String userName, String password, String userType, String permissions,
 			String menteeName, List<String> associateNames, String phoneNo, String emailId, String jobRole,
 			boolean startUpExp, Mentor mentor, List<StartUpApplication> application) {
 		super(userId, userName, password, userType, permissions);
@@ -81,7 +89,7 @@ public class Mentee extends User{
 		this.jobRole = jobRole;
 		this.startUpExp = startUpExp;
 		this.mentor = mentor;
-		this.application = application;
+		this.applications = application;
 	}
 
 	/**
@@ -186,14 +194,14 @@ public class Mentee extends User{
 	 * @return the application
 	 */
 	public List<StartUpApplication> getApplication() {
-		return application;
+		return applications;
 	}
 
 	/**
 	 * @param application the application to set
 	 */
 	public void setApplication(List<StartUpApplication> application) {
-		this.application = application;
+		this.applications = application;
 	}
 	
 }

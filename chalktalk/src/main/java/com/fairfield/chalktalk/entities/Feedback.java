@@ -3,6 +3,8 @@
  */
 package com.fairfield.chalktalk.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,26 +18,32 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class Feedback {
+public class Feedback implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	private String id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long feedbackId;
 	@Column
 	private String givenTo;
 	@Column	
 	private String feedback;
 	@Column
 	private int rating;
+	
+	public Feedback() {}
 	/**
 	 * @param id
 	 * @param givenTo
 	 * @param feedback
 	 * @param rating
 	 */
-	public Feedback(String id, String givenTo, String feedback, int rating) {
+	public Feedback(long id, String givenTo, String feedback, int rating) {
 		super();
-		this.id = id;
+		this.feedbackId = id;
 		this.givenTo = givenTo;
 		this.feedback = feedback;
 		this.rating = rating;
@@ -43,14 +51,14 @@ public class Feedback {
 	/**
 	 * @return the id
 	 */
-	public String getId() {
-		return id;
+	public long getId() {
+		return feedbackId;
 	}
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
-		this.id = id;
+	public void setId(long id) {
+		this.feedbackId = id;
 	}
 	/**
 	 * @return the givenTo

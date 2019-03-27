@@ -3,6 +3,7 @@
  */
 package com.fairfield.chalktalk.entities;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,8 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -26,10 +29,15 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class StartUpApplication {
+public class StartUpApplication implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
-	private String id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long applicationId;
 	@Column
 	private String applicantName;
 	@Column
@@ -82,6 +90,8 @@ public class StartUpApplication {
 	@JoinColumn(name = "menteeId")
 	@ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
 	private Mentee applicationOwner;
+	
+	public StartUpApplication() {}
 	/**
 	 * @param id
 	 * @param applicantName
@@ -106,13 +116,13 @@ public class StartUpApplication {
 	 * @param otherDocs
 	 * @param isApplicationAccepted
 	 */
-	public StartUpApplication(String id, String applicantName, String applicantJobRole, String applicantEmailId,
+	public StartUpApplication(long id, String applicantName, String applicantJobRole, String applicantEmailId,
 			String applicantPhoneNo, String startUpName, String referredBy, Address startUpLocation, String startUpDesc,
 			String linkedInProfile, String website, Date companyStartDate, String companyStage, List<String> customers,
 			List<String> competitors, String teamDetails, boolean hadMentoringSession, String customerProblem,
 			byte[] businessPlan, byte[] pitchDeck, byte[] otherDocs, boolean isApplicationAccepted) {
 		super();
-		this.id = id;
+		this.applicationId = id;
 		this.applicantName = applicantName;
 		this.applicantJobRole = applicantJobRole;
 		this.applicantEmailId = applicantEmailId;
@@ -138,14 +148,14 @@ public class StartUpApplication {
 	/**
 	 * @return the id
 	 */
-	public String getId() {
-		return id;
+	public long getId() {
+		return applicationId;
 	}
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
-		this.id = id;
+	public void setId(long id) {
+		this.applicationId = id;
 	}
 	/**
 	 * @return the applicantName

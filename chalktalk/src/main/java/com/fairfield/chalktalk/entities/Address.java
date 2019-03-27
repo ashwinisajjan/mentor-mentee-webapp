@@ -3,6 +3,8 @@
  */
 package com.fairfield.chalktalk.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,11 +18,15 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class Address {
+public class Address implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	private String addressId;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long addressId;
 	@Column
 	private String addressLine1;
 	@Column
@@ -36,6 +42,8 @@ public class Address {
 	@Column
 	private String pincode;
 	
+	public Address() {}
+	
 	/**
 	 * @param addressId
 	 * @param addressLine1
@@ -46,7 +54,7 @@ public class Address {
 	 * @param country
 	 * @param pincode
 	 */
-	public Address(String addressId, String addressLine1, String addressLine2, String city, String county, String state,
+	public Address(long addressId, String addressLine1, String addressLine2, String city, String county, String state,
 			String country, String pincode) {
 		super();
 		this.addressId = addressId;
@@ -62,14 +70,14 @@ public class Address {
 	/**
 	 * @return the addressId
 	 */
-	public String getAddressId() {
+	public long getAddressId() {
 		return addressId;
 	}
 
 	/**
 	 * @param addressId the addressId to set
 	 */
-	public void setAddressId(String addressId) {
+	public void setAddressId(long addressId) {
 		this.addressId = addressId;
 	}
 

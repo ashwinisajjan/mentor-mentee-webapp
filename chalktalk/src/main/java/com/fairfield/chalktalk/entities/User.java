@@ -3,6 +3,8 @@
  */
 package com.fairfield.chalktalk.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,11 +16,16 @@ import javax.persistence.MappedSuperclass;
  *
  */
 @MappedSuperclass
-public class User {
+public class User implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private String userId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long userId;
 	
 	@Column
 	private String userName;
@@ -32,6 +39,7 @@ public class User {
 	@Column
 	private String permissions;
 
+	public User() {}
 	/**
 	 * @param userId
 	 * @param userName
@@ -39,7 +47,7 @@ public class User {
 	 * @param userType
 	 * @param permissions
 	 */
-	public User(String userId, String userName, String password, String userType, String permissions) {
+	public User(long userId, String userName, String password, String userType, String permissions) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -51,14 +59,14 @@ public class User {
 	/**
 	 * @return the userId
 	 */
-	public String getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
 	/**
 	 * @param userId the userId to set
 	 */
-	public void setUserId(String userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 

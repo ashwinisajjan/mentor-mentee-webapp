@@ -3,6 +3,8 @@
  */
 package com.fairfield.chalktalk.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,37 +17,50 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table
-public class State {
+@Table(name = "states")
+public class State implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	private String stateId;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long stateId;
 	@Column
 	private String state;
-	@Column
-	private String country;
+	
+	public State() {}
 	/**
 	 * @param stateId
 	 * @param state
 	 * @param country
 	 */
-	public State(String stateId, String state, String country) {
+	public State(long stateId, String state) {
 		super();
 		this.stateId = stateId;
 		this.state = state;
-		this.country = country;
+	}
+	
+	/**
+	 * 
+	 * @param state
+	 * @param country
+	 */
+	public State(String state) {
+		super();
+		this.state = state;
 	}
 	/**
 	 * @return the stateId
 	 */
-	public String getStateId() {
+	public long getStateId() {
 		return stateId;
 	}
 	/**
 	 * @param stateId the stateId to set
 	 */
-	public void setStateId(String stateId) {
+	public void setStateId(long stateId) {
 		this.stateId = stateId;
 	}
 	/**
@@ -60,17 +75,4 @@ public class State {
 	public void setState(String state) {
 		this.state = state;
 	}
-	/**
-	 * @return the country
-	 */
-	public String getCountry() {
-		return country;
-	}
-	/**
-	 * @param country the country to set
-	 */
-	public void setCountry(String country) {
-		this.country = country;
-	}
-	
 }

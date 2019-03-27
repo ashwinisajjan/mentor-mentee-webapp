@@ -3,10 +3,13 @@
  */
 package com.fairfield.chalktalk.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -18,11 +21,15 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class MoM {
+public class MoM implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue
-	private String id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long id;
 	@JoinColumn(name = "meetingId")
 	@OneToOne(cascade=CascadeType.ALL)
 	private Meetings meetingId;
@@ -32,6 +39,8 @@ public class MoM {
 	private String agenda;
 	@Column
 	private String summary;
+	
+	public MoM() {}
 	/**
 	 * @param id
 	 * @param meetingId
@@ -39,7 +48,7 @@ public class MoM {
 	 * @param agenda
 	 * @param summary
 	 */
-	public MoM(String id, Meetings meetingId, String meetingAttendence, String agenda, String summary) {
+	public MoM(long id, Meetings meetingId, String meetingAttendence, String agenda, String summary) {
 		super();
 		this.id = id;
 		this.meetingId = meetingId;
@@ -50,13 +59,13 @@ public class MoM {
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	/**

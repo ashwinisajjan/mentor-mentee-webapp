@@ -3,9 +3,12 @@
  */
 package com.fairfield.chalktalk.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -17,19 +20,27 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class MeetUpLocation {
+public class MeetUpLocation implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	private String locId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long locId;
 	
-	@JoinColumn(name = "addressId")
+	@JoinColumn(referencedColumnName = "addressId")
 	@OneToOne(cascade=CascadeType.ALL)
 	private Address addressId;
+	
+	public MeetUpLocation() {}
 	/**
 	 * @param locId
 	 * @param addressId
 	 */
-	public MeetUpLocation(String locId, Address addressId) {
+	public MeetUpLocation(long locId, Address addressId) {
 		super();
 		this.locId = locId;
 		this.addressId = addressId;
@@ -37,13 +48,13 @@ public class MeetUpLocation {
 	/**
 	 * @return the locId
 	 */
-	public String getLocId() {
+	public long getLocId() {
 		return locId;
 	}
 	/**
 	 * @param locId the locId to set
 	 */
-	public void setLocId(String locId) {
+	public void setLocId(long locId) {
 		this.locId = locId;
 	}
 	/**

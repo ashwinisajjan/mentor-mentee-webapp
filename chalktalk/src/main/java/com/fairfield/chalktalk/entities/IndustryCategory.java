@@ -3,6 +3,8 @@
  */
 package com.fairfield.chalktalk.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,36 +18,41 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class IndustryCategory {
+public class IndustryCategory implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	private String id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long id;
 	@Column
 	private String industryCategory;
 	@Column(name = "`order`") 
 	private int order;
+	
+	public IndustryCategory() {}
 	/**
 	 * @param id
 	 * @param industryCategory
 	 * @param order
 	 */
-	public IndustryCategory(String id, String industryCategory, int order) {
+	public IndustryCategory(String industryCategory, int order) {
 		super();
-		this.id = id;
 		this.industryCategory = industryCategory;
 		this.order = order;
 	}
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	/**

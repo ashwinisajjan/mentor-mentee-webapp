@@ -3,6 +3,7 @@
  */
 package com.fairfield.chalktalk.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,12 @@ import javax.persistence.Table;
 @AttributeOverrides({
     @AttributeOverride(name="userId", column=@Column(name="mentorId")),
 })
-public class Mentor extends User{
+public class Mentor extends User implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Column
 	private String mentorName;
@@ -65,6 +71,7 @@ public class Mentor extends User{
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="mentor")
 	private List<Mentee> mentees;
 
+	public Mentor() {}
 	/**
 	 * @param userId
 	 * @param userName
@@ -82,7 +89,7 @@ public class Mentor extends User{
 	 * @param profilePicture
 	 * @param mentees
 	 */
-	public Mentor(String userId, String userName, String password, String userType, String permissions,
+	public Mentor(long userId, String userName, String password, String userType, String permissions,
 			String mentorName, Address address, String phoneNo, String emailId, String referredBy,
 			String linkedInProfile, List<String> areaOfExpertise, byte[] resume, byte[] profilePicture,
 			List<Mentee> mentees) {

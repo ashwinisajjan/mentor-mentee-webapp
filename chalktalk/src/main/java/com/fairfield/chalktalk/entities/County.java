@@ -3,6 +3,8 @@
  */
 package com.fairfield.chalktalk.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,40 +18,54 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class County {
+public class County implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	private String countyId;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long countyId;
 	@Column
 	private String county;
 	@Column
 	private String state;
-	@Column
-	private String country;
+	
+	public County() {}
 	/**
 	 * @param countyId
 	 * @param county
 	 * @param state
 	 * @param country
 	 */
-	public County(String countyId, String county, String state, String country) {
+	public County(long countyId, String county, String state) {
 		super();
 		this.countyId = countyId;
 		this.county = county;
 		this.state = state;
-		this.country = country;
+	}
+	
+	/**
+	 * 
+	 * @param county
+	 * @param state
+	 */
+	public County(String county, String state) {
+		super();
+		this.county = county;
+		this.state = state;
 	}
 	/**
 	 * @return the countyId
 	 */
-	public String getCountyId() {
+	public long getCountyId() {
 		return countyId;
 	}
 	/**
 	 * @param countyId the countyId to set
 	 */
-	public void setCountyId(String countyId) {
+	public void setCountyId(long countyId) {
 		this.countyId = countyId;
 	}
 	/**
@@ -76,17 +92,4 @@ public class County {
 	public void setState(String state) {
 		this.state = state;
 	}
-	/**
-	 * @return the country
-	 */
-	public String getCountry() {
-		return country;
-	}
-	/**
-	 * @param country the country to set
-	 */
-	public void setCountry(String country) {
-		this.country = country;
-	}
-	
 }
