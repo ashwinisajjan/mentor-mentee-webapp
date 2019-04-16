@@ -1,0 +1,33 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+	text-align: center;
+}
+form {
+	background-color: #42eef4;
+	border: 3px solid #f1f1f1;
+	width: auto;
+    height: 350px;
+}
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: flex;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.submit-btn {
+	float: right;
+}
+
+.form-container-divs {
+	display: flex;
+}
+
+.form-container-divs .form-container-row-col1 {
+	flex: 1 1 auto;
+}

@@ -14,5 +14,7 @@ import com.fairfield.chalktalk.dto.MentorDTO;
 public interface IMentorService {
 	
 	List<MentorDTO> getAllMentors();
+	
+	boolean addMentor(MentorDTO mentor);
 
 }

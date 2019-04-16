@@ -21,7 +21,7 @@
 	    </property>
     </bean>
     
-    <mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
+    <mvc:resources location="/" mapping="/**"></mvc:resources>
     
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
@@ -42,7 +42,7 @@
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</prop>
 				<prop key="hibernet.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
 		</property>
 	</bean>

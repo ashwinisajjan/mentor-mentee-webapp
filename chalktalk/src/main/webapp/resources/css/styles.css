@@ -1,0 +1,50 @@
+.nav-bar ul {
+    margin-left: 35%;
+    position: relative;
+}
+
+.nav-bar ul li{
+	list-style: none;
+	display:inline-block;
+	float: left;
+	line-height: 100px;
+	position: relative;
+}
+
+.nav-bar ul li a{
+	display: block;
+	text-decoration: none;
+	font-size: 14px;
+	font-family: arial;
+	color: #1e1e1e;
+	padding: 20px;
+}
+
+.nav-bar ul li a:hover {
+	color : red;
+}
+
+#footer {
+    bottom: 0;
+    height: 15px;
+    font-family: 'Open Sans', sans-serif;
+    color: #008092;
+    padding: 20px;
+    text-align: center;
+}
+
+#wrapper {
+  display: flex;
+}
+
+#contactus-office {
+  flex: 1 1 auto;
+}
+
+#contactus-contact {
+  flex: 1 1 auto;
+}
+
+#contactus-socialmedia {
+  flex: 1 1 auto;
+}
