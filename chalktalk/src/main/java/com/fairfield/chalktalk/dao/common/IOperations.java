@@ -9,7 +9,7 @@ public interface IOperations<T extends Serializable> {
 
     List<T> findAll();
 
-    void create(final T entity);
+    void create(final T entity) throws Exception;
 
     T update(final T entity);
 

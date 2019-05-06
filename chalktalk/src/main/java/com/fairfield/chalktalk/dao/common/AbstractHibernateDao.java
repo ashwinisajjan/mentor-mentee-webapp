@@ -63,7 +63,12 @@ public class AbstractHibernateDao<T extends Serializable> extends AbstractDao<T>
 			session.getTransaction().commit();
     	} catch(Exception e) {
     		session.getTransaction().rollback();
-    		e.printStackTrace();
+    		try {
+    			e.printStackTrace();
+				throw new Exception();
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
 		} finally {
 			session.close();
 		}

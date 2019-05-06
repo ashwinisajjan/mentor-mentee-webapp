@@ -101,6 +101,23 @@
 	<bean id="mentorService" class="com.fairfield.chalktalk.serviceImpl.MentorServiceImpl" autowire="byType">
 		<property name="mentorDAO" ref="mentorDao" />
 	</bean>
+	<bean id="menteeService" class="com.fairfield.chalktalk.serviceImpl.MenteeServiceImpl" autowire="byType">
+		<property name="startUpApplicationDao" ref="startUpApplicationDao" />
+	</bean>
+	<bean id="adminService" class="com.fairfield.chalktalk.serviceImpl.AdminServiceImpl" autowire="byType">
+		<!-- <property name="mentorDAO" ref="mentorDao" /> -->
+	</bean>
+	<bean id="defaultValuesService" class="com.fairfield.chalktalk.serviceImpl.DefaultValuesServiceImpl" autowire="byType">
+		<property name="countyDao" ref="countyDao" />
+		<property name="industryCategoryDao" ref="industryCategoryDao" />
+		<property name="companyStageDao" ref="companyStageDao" />
+		<property name="stateDao" ref="stateDao" />
+		<property name="mentorSpecializationDao" ref="mentorSpecializationDao" />
+	</bean>
+	<bean id="fileOperationService" class="com.fairfield.chalktalk.serviceImpl.FileOperations" autowire="byType">
+		<property name="mentorDao" ref="mentorDao" />
+		<property name="startUpApplicationDao" ref="startUpApplicationDao" />
+	</bean>
 	<!-- application service beans creation ends here -->
 	
 	<!-- datautil bean starts here -->
@@ -113,4 +130,10 @@
 		 <property name="fileName" value="D:/Rinku/MentorMenteeProject/preloadValues.xlsx" />
 	</bean>
 	<!-- datautil bean ends here -->
+	
+	<bean id="myAuthenticationSuccessHandler" class="com.fairfield.chalktalk.security.config.MySimpleUrlAuthenticationSuccessHandler" 
+	         autowire="byType"/>
+	 <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    		<property name="maxUploadSize" value="10000000"/>
+</bean>
 </beans>

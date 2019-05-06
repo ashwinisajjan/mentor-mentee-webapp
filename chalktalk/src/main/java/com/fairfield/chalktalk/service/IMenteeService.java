@@ -1,5 +1,7 @@
 package com.fairfield.chalktalk.service;
 
-public interface IMenteeService {
+import com.fairfield.chalktalk.dto.StartUpApplicationDTO;
 
+public interface IMenteeService {
+	Long addStartupApplication(StartUpApplicationDTO requestDTO);
 }

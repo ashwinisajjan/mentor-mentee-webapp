@@ -1,0 +1,39 @@
+/* Pattern styles */
+.container {
+  display: grid;
+  grid-template-columns: 15% 85%;
+  grid-t
+}
+
+.imgcontainer {
+  width: 100%;
+  height: 80px;
+}
+
+.imgcontainer span {
+	text-transform: uppercase;
+	color: #f9a100;
+}
+
+img.avatar {	
+  height:50%;
+  margin-left:85%;
+  border-radius: 50%;
+}
+
+.left-half {
+  text-transform:uppercase;
+  margin-left: 8px;
+  background: #fff;
+  grid-column: 1;
+}
+
+.left-half ul li {
+	list-style: none;
+	margin-bottom: 15px;
+}
+.right-half {
+  background: #b6701e;
+  height:500px;
+  grid-column: 2;
+}

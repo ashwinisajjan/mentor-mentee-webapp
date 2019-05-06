@@ -7,19 +7,23 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  * @author Ashwini Sajjan
@@ -27,16 +31,16 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-@AttributeOverrides({
-    @AttributeOverride(name="userId", column=@Column(name="mentorId")),
-})
-public class Mentor extends User implements Serializable{
+public class Mentor implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long mentorId;
+	
 	@Column
 	private String mentorName;
 	
@@ -57,10 +61,21 @@ public class Mentor extends User implements Serializable{
 	private String linkedInProfile;
 	
 	@Column
+	private String primaryServiceIndustry;
+	
+	@Column
 	@ElementCollection(targetClass=ArrayList.class)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<String> areaOfExpertise;
 	
-	@Lob @Basic(fetch = FetchType.LAZY)
+	@ElementCollection(fetch=FetchType.EAGER)
+	@CollectionTable(name="mentorFileUploads", joinColumns=@JoinColumn(name="mentorId"))
+	private List<FileUpload> fileUploads = new ArrayList<FileUpload>();
+	
+	@Column
+	private boolean isApplicationAccepted;
+	
+	/*@Lob @Basic(fetch = FetchType.LAZY)
 	@Column (nullable=false, columnDefinition="BLOB NOT NULL")
 	private byte[] resume; 
 	
@@ -68,16 +83,17 @@ public class Mentor extends User implements Serializable{
 	@Column (nullable=false, columnDefinition="BLOB NOT NULL")
 	private byte[] profilePicture;
 	
+	@Lob @Basic(fetch = FetchType.LAZY)
+	@Column (nullable=false, columnDefinition="BLOB NOT NULL")
+	private byte[] certificates;*/
+	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="mentor")
 	private List<Mentee> mentees;
 
 	public Mentor() {}
+
 	/**
-	 * @param userId
-	 * @param userName
-	 * @param password
-	 * @param userType
-	 * @param permissions
+	 * @param mentorId
 	 * @param mentorName
 	 * @param address
 	 * @param phoneNo
@@ -87,13 +103,14 @@ public class Mentor extends User implements Serializable{
 	 * @param areaOfExpertise
 	 * @param resume
 	 * @param profilePicture
+	 * @param certificates
 	 * @param mentees
 	 */
-	public Mentor(long userId, String userName, String password, String userType, String permissions,
-			String mentorName, Address address, String phoneNo, String emailId, String referredBy,
+	public Mentor(long mentorId, String mentorName, Address address, String phoneNo, String emailId, String referredBy,
 			String linkedInProfile, List<String> areaOfExpertise, byte[] resume, byte[] profilePicture,
-			List<Mentee> mentees) {
-		super(userId, userName, password, userType, permissions);
+			byte[] certificates, List<Mentee> mentees) {
+		super();
+		this.mentorId = mentorId;
 		this.mentorName = mentorName;
 		this.address = address;
 		this.phoneNo = phoneNo;
@@ -101,9 +118,24 @@ public class Mentor extends User implements Serializable{
 		this.referredBy = referredBy;
 		this.linkedInProfile = linkedInProfile;
 		this.areaOfExpertise = areaOfExpertise;
-		this.resume = resume;
+		/*this.resume = resume;
 		this.profilePicture = profilePicture;
+		this.certificates = certificates;*/
 		this.mentees = mentees;
+	}
+
+	/**
+	 * @return the mentorId
+	 */
+	public long getMentorId() {
+		return mentorId;
+	}
+
+	/**
+	 * @param mentorId the mentorId to set
+	 */
+	public void setMentorId(long mentorId) {
+		this.mentorId = mentorId;
 	}
 
 	/**
@@ -206,32 +238,46 @@ public class Mentor extends User implements Serializable{
 
 	/**
 	 * @return the resume
-	 */
+	 *//*
 	public byte[] getResume() {
 		return resume;
 	}
 
-	/**
+	*//**
 	 * @param resume the resume to set
-	 */
+	 *//*
 	public void setResume(byte[] resume) {
 		this.resume = resume;
 	}
 
-	/**
+	*//**
 	 * @return the profilePicture
-	 */
+	 *//*
 	public byte[] getProfilePicture() {
 		return profilePicture;
 	}
 
-	/**
+	*//**
 	 * @param profilePicture the profilePicture to set
-	 */
+	 *//*
 	public void setProfilePicture(byte[] profilePicture) {
 		this.profilePicture = profilePicture;
 	}
 
+	*//**
+	 * @return the certificates
+	 *//*
+	public byte[] getCertificates() {
+		return certificates;
+	}
+
+	*//**
+	 * @param certificates the certificates to set
+	 *//*
+	public void setCertificates(byte[] certificates) {
+		this.certificates = certificates;
+	}
+*/
 	/**
 	 * @return the mentees
 	 */
@@ -245,5 +291,61 @@ public class Mentor extends User implements Serializable{
 	public void setMentees(List<Mentee> mentees) {
 		this.mentees = mentees;
 	}
+
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	
+	/**
+	 * @return the fileUploads
+	 */
+	public List<FileUpload> getFileUploads() {
+		return fileUploads;
+	}
+
+	/**
+	 * @param fileUploads the fileUploads to set
+	 */
+	public void setFileUploads(List<FileUpload> fileUploads) {
+		this.fileUploads = fileUploads;
+	}
+
+	/**
+	 * 
+	 * @param file
+	 */
+	public void addFileUpload(FileUpload file){
+		fileUploads.add(file);
+	}
+
+	/**
+	 * @return the primaryServiceIndustry
+	 */
+	public String getPrimaryServiceIndustry() {
+		return primaryServiceIndustry;
+	}
+
+	/**
+	 * @param primaryServiceIndustry the primaryServiceIndustry to set
+	 */
+	public void setPrimaryServiceIndustry(String primaryServiceIndustry) {
+		this.primaryServiceIndustry = primaryServiceIndustry;
+	}
+
+	/**
+	 * @return the isApplicationAccepted
+	 */
+	public boolean isApplicationAccepted() {
+		return isApplicationAccepted;
+	}
+
+	/**
+	 * @param isApplicationAccepted the isApplicationAccepted to set
+	 */
+	public void setApplicationAccepted(boolean isApplicationAccepted) {
+		this.isApplicationAccepted = isApplicationAccepted;
+	}
 }

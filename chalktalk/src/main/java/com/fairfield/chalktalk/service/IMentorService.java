@@ -6,6 +6,8 @@ package com.fairfield.chalktalk.service;
 import java.util.List;
 
 import com.fairfield.chalktalk.dto.MentorDTO;
+import com.fairfield.chalktalk.dto.MentorProfileResponseDTO;
+import com.fairfield.chalktalk.entities.Mentor;
 
 /**
  * @author Ashwini Sajjan
@@ -13,8 +15,10 @@ import com.fairfield.chalktalk.dto.MentorDTO;
  */
 public interface IMentorService {
 	
-	List<MentorDTO> getAllMentors();
+	List<MentorProfileResponseDTO> getAllMentors();
 	
-	boolean addMentor(MentorDTO mentor);
+	Long addMentor(MentorDTO mentor);
+	
+	Mentor getMentor(Long id);
 
 }

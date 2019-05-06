@@ -7,13 +7,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -25,16 +26,16 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-@AttributeOverrides({
-    @AttributeOverride(name="userId", column=@Column(name="menteeId")),
-})
-public class Mentee extends User implements Serializable{
+public class Mentee implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long menteeId;
 	@Column
 	private String menteeName;
 	
@@ -58,17 +59,14 @@ public class Mentee extends User implements Serializable{
 	@ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
 	private Mentor mentor;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "applicationId")
-	private List<StartUpApplication> applications;
+	/*@JoinColumn(name = "applicationId", referencedColumnName="applicationId", insertable=false, updatable=false)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<StartUpApplication> applications;*/
 
 	public Mentee() {}
+	
+
 	/**
-	 * @param userId
-	 * @param userName
-	 * @param password
-	 * @param userType
-	 * @param permissions
 	 * @param menteeName
 	 * @param associateNames
 	 * @param phoneNo
@@ -76,12 +74,11 @@ public class Mentee extends User implements Serializable{
 	 * @param jobRole
 	 * @param startUpExp
 	 * @param mentor
-	 * @param application
+	 * @param applications
 	 */
-	public Mentee(long userId, String userName, String password, String userType, String permissions,
-			String menteeName, List<String> associateNames, String phoneNo, String emailId, String jobRole,
-			boolean startUpExp, Mentor mentor, List<StartUpApplication> application) {
-		super(userId, userName, password, userType, permissions);
+	public Mentee(String menteeName, List<String> associateNames, String phoneNo, String emailId, String jobRole,
+			boolean startUpExp, Mentor mentor, List<StartUpApplication> applications) {
+		super();
 		this.menteeName = menteeName;
 		this.associateNames = associateNames;
 		this.phoneNo = phoneNo;
@@ -89,8 +86,16 @@ public class Mentee extends User implements Serializable{
 		this.jobRole = jobRole;
 		this.startUpExp = startUpExp;
 		this.mentor = mentor;
-		this.applications = application;
+		//this.applications = applications;
 	}
+
+
+
+
+
+
+
+
 
 	/**
 	 * @return the menteeName
@@ -192,16 +197,16 @@ public class Mentee extends User implements Serializable{
 
 	/**
 	 * @return the application
-	 */
+	 *//*
 	public List<StartUpApplication> getApplication() {
 		return applications;
 	}
 
-	/**
+	*//**
 	 * @param application the application to set
-	 */
+	 *//*
 	public void setApplication(List<StartUpApplication> application) {
 		this.applications = application;
-	}
+	}*/
 	
 }

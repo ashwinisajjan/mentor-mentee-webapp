@@ -1,3 +1,12 @@
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+  float: left;
+  padding: 10px;
+  align-content: space-around;
+}
+h2 {
+	text-align: center;
+}
 body {
   font-family: 'arial', sans-serif;
 }
@@ -98,4 +107,10 @@ ul.nav-bar-ui {
 #contactus-socialmedia {
 	color: #008092;
   flex: 1 1 auto;
+}
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 500px) {
+  .column {
+    width: 100%;
+  }
 }

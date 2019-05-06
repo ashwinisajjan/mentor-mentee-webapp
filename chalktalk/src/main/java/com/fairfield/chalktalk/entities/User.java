@@ -4,18 +4,26 @@
 package com.fairfield.chalktalk.entities;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * @author Ashwini Sajjan
  *
  */
-@MappedSuperclass
+@Entity
+@Table
 public class User implements Serializable{
 
 	/**
@@ -33,28 +41,31 @@ public class User implements Serializable{
 	@Column
 	private String password;
 	
-	@Column
-	private String userType;
+	@Column(name = "isActive")
+	private int isActive;
 	
-	@Column
-	private String permissions;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles;
 
 	public User() {}
+
 	/**
 	 * @param userId
 	 * @param userName
 	 * @param password
-	 * @param userType
-	 * @param permissions
+	 * @param active
+	 * @param roles
 	 */
-	public User(long userId, String userName, String password, String userType, String permissions) {
+	public User(long userId, String userName, String password, int active, Set<Role> roles) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
 		this.password = password;
-		this.userType = userType;
-		this.permissions = permissions;
+		this.isActive = active;
+		this.roles = roles;
 	}
+
 
 	/**
 	 * @return the userId
@@ -99,31 +110,37 @@ public class User implements Serializable{
 	}
 
 	/**
-	 * @return the userType
+	 * @return the active
 	 */
-	public String getUserType() {
-		return userType;
+	public int getActive() {
+		return isActive;
 	}
 
 	/**
-	 * @param userType the userType to set
+	 * @param active the active to set
 	 */
-	public void setUserType(String userType) {
-		this.userType = userType;
+	public void setActive(int active) {
+		this.isActive = active;
 	}
 
 	/**
-	 * @return the permissions
+	 * @return the roles
 	 */
-	public String getPermissions() {
-		return permissions;
+	public Set<Role> getRoles() {
+		return roles;
 	}
 
 	/**
-	 * @param permissions the permissions to set
+	 * @param roles the roles to set
 	 */
-	public void setPermissions(String permissions) {
-		this.permissions = permissions;
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
-	
+
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 }
