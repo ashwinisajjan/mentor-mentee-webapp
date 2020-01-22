@@ -9,14 +9,17 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  * @author Ashwini Sajjan
@@ -35,17 +38,20 @@ public class User implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long userId;
 	
-	@Column
+	@Column( nullable=false, unique=true)
 	private String userName;
 	
-	@Column
+	@Column(nullable=false)
 	private String password;
 	
 	@Column(name = "isActive")
-	private int isActive;
+	private boolean isActive;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	@ManyToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "userId",unique=false), 
+	inverseJoinColumns = @JoinColumn(name = "role_id",unique=false))
+	//uniqueConstraints = @UniqueConstraint(columnNames = { "userId", "role_id"}))
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private Set<Role> roles;
 
 	public User() {}
@@ -57,7 +63,7 @@ public class User implements Serializable{
 	 * @param active
 	 * @param roles
 	 */
-	public User(long userId, String userName, String password, int active, Set<Role> roles) {
+	public User(long userId, String userName, String password, boolean active, Set<Role> roles) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -112,14 +118,14 @@ public class User implements Serializable{
 	/**
 	 * @return the active
 	 */
-	public int getActive() {
+	public boolean getActive() {
 		return isActive;
 	}
 
 	/**
 	 * @param active the active to set
 	 */
-	public void setActive(int active) {
+	public void setActive(boolean active) {
 		this.isActive = active;
 	}
 

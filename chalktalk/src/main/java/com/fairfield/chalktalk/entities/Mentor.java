@@ -73,7 +73,7 @@ public class Mentor implements Serializable{
 	private List<FileUpload> fileUploads = new ArrayList<FileUpload>();
 	
 	@Column
-	private boolean isApplicationAccepted;
+	private boolean isApplicationAccepted = Boolean.FALSE;
 	
 	/*@Lob @Basic(fetch = FetchType.LAZY)
 	@Column (nullable=false, columnDefinition="BLOB NOT NULL")

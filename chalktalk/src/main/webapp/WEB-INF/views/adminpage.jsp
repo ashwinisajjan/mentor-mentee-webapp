@@ -11,27 +11,30 @@
 </head>
 <body>
 <div class="imgcontainer">
-   <span><img src="${pageContext.request.contextPath}/resources/images/img_avatar2.jpg" alt="Avatar" class="avatar">Admin</span>
+   <a href="${pageContext.request.contextPath}/logoutpage">logout</a>
 </div>
+
 <section class="container">
+	  	<div class="logocontainer">
+          <span>The Connecticut Mentoring Team</span>
+          <a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/images/mentor.jpg" alt="Logo" class="logo"></a>
+</div>
 	  <div class="left-half">
 	    <ul>
-	      <li><a href="#mentor-section">Mentors</a></li>
-	      <li><a href="#mentee-section">Mentees</a></li>
-	      <li><a href="#associations-section">Associations</a></li>
-	      <li><a href="#applications-section">Applications</a></li>
+	      <li><a id="mentorhref" href="#mentor-section">Mentor Applications</a></li>
+	      <li><a id="menteehref" href="#mentee-section">Mentees</a></li>
+	      <li><a id="associationshref" href="#associations-section">Associations</a></li>
+	      <li><a id="applicationsref" href="#applications-section">StartUp Applications</a></li>
 	    </ul>
 	  </div>
 	  <div id = "mentor-section" class="right-half">
 	    <article>
-	      <h1>This is ADMIN Section</h1>
-	      <p>I'm mentor section</p>
+	      <h1>List Of Mentor Applications</h1>
 	    </article>
 	  </div>
 	  <div id = "mentee-section" class="right-half">
 	    <article>
-	      <h1>This is ADMIN Section</h1>
-	      <p>I'm mentee section</p>
+	      <h1>List Of Mentor Applications</h1>
 	    </article>
 	  </div>
 	  <div id = "associations-section" class="right-half">
@@ -42,9 +45,10 @@
 	  </div>
 	  <div id = "applications-section" class="right-half">
 	    <article>
-	      <h1>This is ADMIN Section</h1>
-	      <p>I'm applications section</p>
+	      <h1>List Of StartUp Applications</h1>
 	    </article>
+	    <ol id="myUL">
+	    </ol>
 	  </div>
 </section>
 </body>

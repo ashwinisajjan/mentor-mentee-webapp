@@ -111,18 +111,21 @@ public class LoadDataUtil {
 	}
 	
 	private void insertRowInDB(Serializable entity) {
-		if(entity instanceof IndustryCategory) {
-			industryCategoryDaoImpl.create((IndustryCategory)entity);
-		} else if (entity instanceof MentorSpecialization) {
-			mentorSpecializationDaoImpl.create((MentorSpecialization)entity);
-		} else if (entity instanceof State) {
-			stateDaoImpl.create((State)entity);
-		} else if (entity instanceof County) {
-			countyDaoImpl.create((County)entity);
-		} else if (entity instanceof CompanyStage) {
-			companyStageDaoImpl.create((CompanyStage)entity);
+		try {
+			if(entity instanceof IndustryCategory) {
+				industryCategoryDaoImpl.create((IndustryCategory)entity);
+			} else if (entity instanceof MentorSpecialization) {
+				mentorSpecializationDaoImpl.create((MentorSpecialization)entity);
+			} else if (entity instanceof State) {
+				stateDaoImpl.create((State)entity);
+			} else if (entity instanceof County) {
+				countyDaoImpl.create((County)entity);
+			} else if (entity instanceof CompanyStage) {
+				companyStageDaoImpl.create((CompanyStage)entity);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
 	}
 	/**
 	 * @param industryCategoryDaoImpl the industryCategoryDaoImpl to set

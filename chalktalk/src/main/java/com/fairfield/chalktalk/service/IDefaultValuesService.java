@@ -5,6 +5,7 @@ package com.fairfield.chalktalk.service;
 
 import java.util.List;
 
+import com.fairfield.chalktalk.dto.AddressDTO;
 import com.fairfield.chalktalk.dto.CompanyStageDTO;
 import com.fairfield.chalktalk.dto.CountyDTO;
 import com.fairfield.chalktalk.dto.IndustryCategoryDTO;
@@ -22,4 +23,5 @@ public interface IDefaultValuesService {
 	List<MentorSpecilizationDTO> getAllMentorSpecilizations();
 	List<IndustryCategoryDTO> getAllIndustryCategories();
 	List<CompanyStageDTO> getAllCompanyStages();
+	//List<AddressDTO> getAllMeetupLocations();
 }

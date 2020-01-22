@@ -34,6 +34,13 @@
 			</ul>
 		</nav>
 	</div>
+	<br>
+	<br>
+	<select id="searchCriteria" name = "searchCriteria" class= "searchFunctionality">
+		  <option>SearchByMentorName</option>
+		  <option>SearchBySkills</option>
+	</select>
+	<input name = "searchInput" type="text" id="myInput" class= "searchFunctionality">
 	<div class="row">
 		<h2>Meet our Mentors</h2>
 		<div class="column" id="column">

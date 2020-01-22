@@ -82,12 +82,32 @@ $(document).ready(function () {
 			 }
 	});
 	
+	$('#emailId').on('change', function(e) {
+		
+		 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(e.currentTarget.value))
+		  {
+		    return (true)
+		  }
+		    alert("You have entered an invalid email address!")
+		    return (false)
+	});
+	
+	$('#phoneNo').on('change', function(e) {
+		
+		if (/^[0-9]*$/.test(e.currentTarget.value))
+		  {
+		    return (true)
+		  }
+		    alert("You have entered an invalid contact number!")
+		    return (false)
+	});
+	
 	$('#resume').on('change', function(e) {
 		var fileuploaded;
 		if ((file = this.files[0])) {
 			fileuploaded = $( this ).val();
 			var ext = fileuploaded.split('.').pop();
-			   if(ext=="pdf" || ext=="docx" || ext=="doc"){
+			   if(ext=="pdf"){
 				   alert("valid type");
 			   } else {
 				   this.value = null;
@@ -123,7 +143,8 @@ $(document).ready(function () {
 			 		  var height = this.height;
 			 		  var width = this.width;
 			 		  if (height > 389 || width > 305) {
-			 		    alert("Height and Width must not exceed ");
+			 		    alert("The dimension of the image should be 389x305 i.e height must not exceed 389 " +
+			 		    		"and width must not exceed 305");
 			 		    return false;
 			 		  }
 			 		  alert("Uploaded image has valid Height and Width.");

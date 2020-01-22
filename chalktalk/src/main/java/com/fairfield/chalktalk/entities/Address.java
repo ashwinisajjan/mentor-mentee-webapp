@@ -41,6 +41,8 @@ public class Address implements Serializable{
 	private String country;
 	@Column
 	private String pincode;
+	@Column
+	private String purpose;
 	
 	public Address() {}
 	
@@ -178,5 +180,18 @@ public class Address implements Serializable{
 	public void setPincode(String pincode) {
 		this.pincode = pincode;
 	}
-	
+
+	/**
+	 * @return the purpose
+	 */
+	public String getPurpose() {
+		return purpose;
+	}
+
+	/**
+	 * @param purpose the purpose to set
+	 */
+	public void setPurpose(String purpose) {
+		this.purpose = purpose;
+	}
 }

@@ -1,0 +1,101 @@
+body {
+  font-family: 'arial', sans-serif;
+}
+
+#nav-bar-section1 {
+  width: 100%;
+  margin: 0 auto;
+  background-color: #FFFFFF;
+  padding: inherit;
+  display: inline-flex;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.imgcontainer {
+  text-align: left;
+  margin: inherit;
+  padding: inherit;
+  width: 20%;
+  align-items: center;
+  display: inline-flex;
+  float: right;
+}
+
+.imgcontainer span {
+	padding-left:0;
+	text-transform: uppercase;
+	text-align: right;
+	color: #f9a100;
+	display: inline-flex;
+}
+
+a img.logo {
+  padding-left:0;
+  width: 50%;
+  border-radius: 60%;
+  align-self: center;
+  display: inline;
+}
+
+.nav-bar-ui {
+    width: auto;
+    text-align: center;
+    line-height: 32px;
+    flex: 1 1 auto;
+    float: right;
+}
+
+ul.nav-bar-ui {
+	margin: 0 auto;
+	text-align: left;
+}
+
+.nav-bar-ui li {
+  display: inline;
+  padding: 0 10px 0 10px;
+  font-style: normal;
+}
+
+.nav-bar-ui a {
+  text-decoration: none;
+  color: #008092;
+  padding: 5px;
+  text-transform: uppercase;
+}
+
+.nav-bar-ui a:hover {
+  text-decoration: underline;
+}
+
+.aboutus-div2 ul {
+  text-align: left;
+}
+
+#footer {
+    bottom: 0;
+    height: 15px;
+    font-family: 'Open Sans', sans-serif;
+    color: #008092;
+    padding: 20px;
+    text-align: center;
+}
+
+#wrapper {
+  display: flex;
+}
+
+#contactus-office {
+  color: #008092;
+  flex: 1 1 auto;
+}
+
+#contactus-contact {
+  color: #008092;
+  flex: 1 1 auto;
+}
+
+#contactus-socialmedia {
+	color: #008092;
+  flex: 1 1 auto;
+}

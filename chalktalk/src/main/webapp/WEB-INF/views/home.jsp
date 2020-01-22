@@ -4,6 +4,8 @@
 	<meta charset="utf-8">
 	<title>MentorMentee</title>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/styles.css" />
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/lib/jquery-3.4.0.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/homepage.js"></script>
 </head>
 <body>
    <div id="nav-bar-section1">
@@ -28,9 +30,9 @@
      <div class = "aboutus-div1" style="padding: 25px 25px">
 	   	 <div class = "aboutus-div2" style="text-align: center; color: #008092;">
 	   	  <h1><br>ABOUT US</h1>
-	   	 	<h3 style="text-align: center; color: #f9a100; font-weight: bold;">Working with startups to refine their business models</h3>
-	   	 	<p style="text-align: center;">The Venture Mentoring Team (The VMT) is a nonprofit educational 501(c)(3) dedicated to fostering the startup community by training and credentialing Mentors and then connecting them with the best and brightest entrepreneurs to help startups reach their full potential.</p>
-	   	 	<p style="text-align: center;">We are experienced executives and entrepreneurs in corporate, legal, academic, profit and not for profit organizations that donate our time and talent. &nbsp;Our goal is to help the startups gain sustainability and traction.</p>
+	   	 	<h3 style="text-align: center; color: #f9a100; font-weight: bold;">Working with community people to find the solutions to their problems and also to refine the business models for startups</h3>
+	   	 	<p style="text-align: center;">The Connecticut Mentoring Team is a nonprofit organization dedicated to fostering the help community by training and credentialing Mentors and then connecting them with the best and brightest entrepreneurs to help startups and community reach their full potential.</p>
+	   	 	<p style="text-align: center;">We are experienced executives and entrepreneurs in corporate, legal, academic, profit and not for profit organizations that donate our time and talent. &nbsp;Our goal is to help the people and startups gain sustainability and traction.</p>
 	   	 	<p style="text-align: left;"><strong>How We Help:</strong></p>
       	   	<ul>
          			<li>We refine your business plan through collective intelligence</li>
@@ -38,7 +40,7 @@
          			<li>Prioritize your activities to get to market faster</li>
          			<li>Create access for maximum exposure</li>
       		</ul>
-      		<p style="text-align: left;"><strong>Why Start-ups Love the Venture Mentoring Team:</strong></p>
+      		<!-- <p style="text-align: left;"><strong>Why Start-ups Love the Venture Mentoring Team:</strong></p> -->
 	   	 </div>
 	 </div>  	 
    </section>
@@ -71,7 +73,7 @@
 	   	 	<p style="text-align: center;"><a id="mentee-application-alink" class="picture-box-alink" style="color: black; font-weight: bolder; text-transform: uppercase; border-style: solid; padding: 10px;" href="${pageContext.request.contextPath}/startupapplication">Apply to be a a Powered StartUp</a></p>
 	   	 	<br>
 	   	 	<p style="text-align: center;"><a id="mentee-question-alink" class="picture-box-alink" style="color: black; font-weight: bolder; text-transform: uppercase; border-style: solid; padding: 10px;" href="https://www.thevmt.org/mentors/#apply">FAQ's</a></p>
-	   	 	<!-- Needs to be deleted after complete developing -->
+	   	 	<%-- <!-- Needs to be deleted after complete developing -->
 	   	 	<br>
 	   	 	<p style="text-align: center;"><a id="mentee-question-alink" class="picture-box-alink" style="color: black; font-weight: bolder; text-transform: uppercase; border-style: solid; padding: 10px;" 
 	   	 	      href="${pageContext.request.contextPath}/adminpage">Admin Page</a></p>
@@ -81,7 +83,7 @@
 	   	 	<br>
 	   	 	<p style="text-align: center;"><a id="mentee-question-alink" class="picture-box-alink" style="color: black; font-weight: bolder; text-transform: uppercase; border-style: solid; padding: 10px;" 
 	   	 	      href="${pageContext.request.contextPath}/menteepage">Mentee Page</a></p> 
-	   	 	<!-- delete till here -->     
+	   	 	<!-- delete till here --> --%>     
 	   	 </div>
    	 </div>
    </section>
@@ -96,17 +98,22 @@
 	   	</div>
    	 	<div class="row border-bottom row-container" style="margin-top: 0px !important;">
 		 	<div class="col-md-4 border-right" style="margin-bottom: 0px !important;">
-				<p class="text-bock-size" style="text-align: center;"><strong>Wyncode Miami</strong></p>
+				<p id = "addressLine1" class="text-bock-size" style="text-align: center;"><strong>Fairfield University Library</strong></p>
 				<div class="resize">
-					<p class="text-bock-size" style="text-align: center;">549 NW 28th Street Miami FL 33127</p>
+					<p class="text-bock-size" style="text-align: center;">1073 N Benson Rd, Fairfield, CT 06824</p>
 	     		</div>
 				<p class="p-no-margin"></p>
 		 	</div>
 			<div class="col-md-4 border-right" style="margin-bottom: 0px !important;">
-				<p class="text-bock-size" style="text-align: center;"><strong>WhiteKnight Solutions, LLC </strong></p>
+				<p class="text-bock-size" style="text-align: center;"><strong>Fairfield Public Library</strong></p>
 				<div class="resize">
-					<p class="text-bock-size" style="text-align: center;">2401 NW Boca Raton Blvd
-					Boca Raton, Florida 33431</p>
+					<p class="text-bock-size" style="text-align: center;"> 1080 Old Post Rd, Fairfield, CT 06824</p>
+				</div>
+			<p class="p-no-margin"></p>
+			<div class="col-md-4 border-right" style="margin-bottom: 0px !important;">
+				<p class="text-bock-size" style="text-align: center;"><strong>Entrepreneurship Foundation Inc.</strong></p>
+				<div class="resize">
+					<p class="text-bock-size" style="text-align: center;"> Fairfield, CT 06824</p>
 				</div>
 			<p class="p-no-margin"></p>
 			</div>
@@ -118,16 +125,29 @@
    	 <div id="wrapper">
 	   	 <div class="contactus-col" id="contactus-office">
 	   	 	<p style="text-align: center;"><strong>Office</strong></p>
+	   	 	<p style="color: #fff; font-size: 18px;">Entrepreneurship Foundation Inc. Fairfield, CT 06824</p>
 	   	 </div>
 	   	 <div class="contactus-col" id="contactus-contact">
 	   	 	<p style="text-align: center;"><strong>Contact Us</strong></p>
+	   	 	<ul style="list-style-type: none; text-indent: 0px;padding:0px;">
+              <li style="color: #fff; font-size: 18px;">Phone: +1 (203) 256-3155</li>
+              <li style="color: #fff; font-size: 18px;">Email: Roer@entrepreneurshipfoundation.org</li>
+            </ul>
 	   	 </div>
 	   	 <div class="contactus-col" id="contactus-socialmedia">
 	   	 	<p style="text-align: center;"><strong>Social Media</strong></p>
+	   	 	<ul style="list-style-type: none; text-indent: 0px;padding:0px;">
+	   	 	<li class="tw-icon"
+                style="color: #fff; display: inline-block; float: center; margin-right: 20px; font-size: 24px; text-indent: 0px;">
+                <i class="fa fa-twitter"></i></li>
+              <li class="gl-icon"
+                style="color: #fff; display: inline-block; float: center; margin-right: 20px; font-size: 24px; text-indent: 0px;">
+                <i class="fa fa-linkedin"></i></li>
+            </ul>
 	   	 </div>
    	 </div>
    	 <div id="footer">
-        <p>&copy; 2013 Friend | Design and Development. All Rights Reserved.</p>
+        <p>&copy; 2019 Friend | Design and Development. All Rights Reserved.</p>
     </div>
    </section>
 

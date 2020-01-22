@@ -5,20 +5,11 @@
   grid-t
 }
 
-.imgcontainer {
-  width: 100%;
-  height: 80px;
-}
-
-.imgcontainer span {
-	text-transform: uppercase;
-	color: #f9a100;
-}
-
-img.avatar {	
-  height:50%;
-  margin-left:85%;
-  border-radius: 50%;
+.imgcontainer a{
+  margin-left:90%;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-variant: small-caps;
 }
 
 .left-half {
@@ -36,4 +27,33 @@ img.avatar {
   background: #b6701e;
   height:500px;
   grid-column: 2;
+}
+.logocontainer {
+  padding-top:0;
+  text-align: left;
+  margin: inherit;
+  padding: inherit;
+  width: 100%;
+  height: 80px;
+  align-items: center;
+  display: inline-flex;
+  float: right;
+}
+
+.logocontainer span {
+	padding-top:0;
+	padding-left:0;
+	text-transform: uppercase;
+	text-align: right;
+	color: #f9a100;
+	display: inline-flex;
+}
+
+a img.logo {
+  padding-top:0;
+  padding-left:0;
+  width: 50%;
+  border-radius: 60%;
+  align-self: center;
+  display: inline;
 }

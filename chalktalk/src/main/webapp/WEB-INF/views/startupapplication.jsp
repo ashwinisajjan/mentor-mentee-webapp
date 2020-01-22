@@ -14,52 +14,52 @@
 <form id = "startupapplicationform" class="form-inline"  action="savestartupapplication", method="post">
         <p>
         <label for="startupname"><b>Startup Name</b></label>
-		<input type="text" name="startUpName" value = "shdgfhhv" required>
+		<input type="text" name="startUpName" value = "shdgfhhv" maxlength="30" required>
 		</p>
 	    
 	    <p>
 	    <label for="referredby"><b>Referred By</b></label>
-	    <input type="text" name="referredBy" value = "shdgfhhv" required>
+	    <input type="text" name="referredBy" value = "shdgfhhv" maxlength="30" required>
         </p>
         
         <p>
         <label for="your name"><b>Your Name</b></label>
-		<input type="text" name="applicantName" value = "shdgfhhv" required>
+		<input type="text" name="applicantName" value = "shdgfhhv" maxlength="30" required>
 		</p>
 		
 		<p>
         <label for="role"><b>Your role in your startup:</b></label>
-		<input type="text" name="applicantJobRole" value = "shdgfhhv" required>
+		<input type="text" name="applicantJobRole" value = "shdgfhhv" maxlength="30" required>
 		</p>
 		
 	    <p>
 	    <label for="email"><b>Your email address</b></label>
-	    <input type="text" name="applicantEmailId" value = "shdgfhhv" required>
+	    <input id="applicantEmailId" type="text" name="applicantEmailId" value = "shdgfhhv" maxlength="30" required>
 	    </p>
     
         <p>
 	    <label for="phnum"><b>Your phone number</b></label>
-	    <input type="text" name="applicantPhoneNo" value = "shdgfhhv" required>
+	    <input id="applicantPhoneNo" type="text" name="applicantPhoneNo" value = "shdgfhhv" maxlength="15" required>
 	    </p>
 	    
 	    <p>
         <br><label for="location"><b>Startup Location(City)</b></label>
-	    <input type="text" name="city" value = "shdgfhhv" required>
+	    <input type="text" name="city" value = "shdgfhhv" maxlength="30" required>
 	    </p>
 	    
         <p>
 	    <label for="linkedin"><b>Linkedin</b></label>
-	    <input type="text" name="linkedInProfile" value = "shdgfhhv" required>
+	    <input type="text" name="linkedInProfile" value = "shdgfhhv" maxlength="30" required>
         </p>
         
         <p>
 	    <label for="website"><b>Website</b></label>
-	    <input type="text" name="website" value = "shdgfhhv" required>
+	    <input type="text" name="website" value = "shdgfhhv" maxlength="30" required>
         </p>
         
         <p>
 	    <label for="companyStartDate"><b>When did you start working on your start up?:</b></label>
-	    <input type="text" name="companyStartDate" value = "shdgfhhv" required>
+	    <input type="text" name="companyStartDate" value = "shdgfhhv" maxlength="20" required>
         </p>
      
      	<p>

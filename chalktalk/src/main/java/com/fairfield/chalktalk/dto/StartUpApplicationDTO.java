@@ -3,12 +3,9 @@
  */
 package com.fairfield.chalktalk.dto;
 
-import java.sql.Date;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author Ashwini Sajjan

@@ -21,7 +21,7 @@
     <label for="password"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="password" required>
    
-    <p id = "id-psw" class="psw"><a href="#"> Forgot Password</a></p>
+    <p id = "id-psw" class="psw"><a href="${pageContext.request.contextPath}/forgotpassword"> Forgot Password</a></p>
     <p><button type="submit">Login</button></p>
   </div>
   </div>

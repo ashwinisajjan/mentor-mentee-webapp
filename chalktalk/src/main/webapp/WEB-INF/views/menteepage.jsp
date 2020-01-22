@@ -10,10 +10,14 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/menteepage.js"></script>
 </head>
 <body>
-	<div class="imgcontainer">
-   <span><img src="${pageContext.request.contextPath}/resources/images/img_avatar2.jpg" alt="Avatar" class="avatar">Admin</span>
+<div class="imgcontainer">
+   <a href="${pageContext.request.contextPath}/logoutpage">logout</a>
 </div>
 <section class="container">
+	  <div class="logocontainer">
+          <span>The Connecticut Mentoring Team</span>
+          <a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/images/mentor.jpg" alt="Logo" class="logo"></a>
+	  </div>
 	  <div class="left-half">
 	    <ul>
 	      <li><a href="#mentor-section">Mentors</a></li>

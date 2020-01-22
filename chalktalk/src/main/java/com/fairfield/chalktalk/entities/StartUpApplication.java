@@ -95,7 +95,7 @@ public class StartUpApplication implements Serializable{
 	@Lob @Basic(fetch = FetchType.LAZY)
 	@Column (nullable=false, columnDefinition="BLOB NOT NULL")
 	private byte[] otherDocs;*/
-	@ElementCollection
+	@ElementCollection(fetch=FetchType.EAGER)
 	@CollectionTable(name="startupFileUploads", joinColumns=@JoinColumn(name="applicationId"))
 	private List<FileUpload> fileUploads = new ArrayList<FileUpload>();
 	@Column

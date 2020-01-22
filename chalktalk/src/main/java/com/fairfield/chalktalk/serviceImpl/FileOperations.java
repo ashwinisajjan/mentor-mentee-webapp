@@ -149,7 +149,7 @@ public class FileOperations implements IFileOperations {
 			if(startup!=null){
 				for (Map.Entry<String, MultipartFile> entry : uploadedFileswithTypes.entrySet()) {
 					MultipartFile file = entry.getValue();
-					if (!file.isEmpty() /*&& (file.getContentType().contains("spreadsheetml") || file.getContentType().contains("ms-excel"))*/) {
+					if (!file.isEmpty() && entry.getKey().equalsIgnoreCase("businessplandoc")) {
 						try {
 							File startupsDir = new File("../webapps/startups");
 							if(!startupsDir.exists()){
@@ -164,7 +164,38 @@ public class FileOperations implements IFileOperations {
 							String imageFileName = startup.getStartUpName()+"_"+file.getOriginalFilename();
 							String finalFileName = imageFileName.toString();
 							String finalFile = startupcompanyDir.getCanonicalPath()+"/"+finalFileName;
-							String imageURL = "../webapps/startups/"+finalFileName;
+							String imageURL = "../webapps/startups/"+startup.getStartUpName()+"/"+finalFileName;
+							byte[] bytes = file.getBytes();
+							BufferedOutputStream stream = 
+									new BufferedOutputStream(new FileOutputStream(new File(startupcompanyDir.getCanonicalPath()+"/"+finalFileName)));
+							stream.write(bytes);
+							stream.close();
+							
+							FileUpload resumeDoc = new FileUpload();
+							resumeDoc.setFilePath(imageURL);
+							resumeDoc.setFileType(file.getContentType());
+							resumeDoc.setWhatIsIt("BUSINESSPLANDOC");
+							files.add(resumeDoc);
+							
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					} else if (!file.isEmpty() && entry.getKey().equalsIgnoreCase("pitchDeck")) {
+						try {
+							File startupsDir = new File("../webapps/startups");
+							if(!startupsDir.exists()){
+								startupsDir.mkdir();
+							}
+							File startupcompanyDir = new File(startupsDir.getPath()+"/"+startup.getStartUpName()+"/");
+							if(!startupcompanyDir.exists()){
+								startupcompanyDir.mkdir();
+							}
+							Timestamp present = new Timestamp(new java.util.Date().getTime());
+							//String imageFileName = UUID.randomUUID().toString().replaceAll("-", "")+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+							String imageFileName = startup.getStartUpName()+"_"+file.getOriginalFilename();
+							String finalFileName = imageFileName.toString();
+							String finalFile = startupcompanyDir.getCanonicalPath()+"/"+finalFileName;
+							String imageURL = "../webapps/startups/"+startup.getStartUpName()+"/"+finalFileName;
 							byte[] bytes = file.getBytes();
 							BufferedOutputStream stream = 
 									new BufferedOutputStream(new FileOutputStream(new File(startupcompanyDir.getCanonicalPath()+"/"+finalFileName)));
@@ -175,17 +206,39 @@ public class FileOperations implements IFileOperations {
 							FileUpload resumeDoc = new FileUpload();
 							resumeDoc.setFilePath(imageURL);
 							resumeDoc.setFileType(file.getContentType());
+							resumeDoc.setWhatIsIt("PITCHDECKDOC");
+							files.add(resumeDoc);
 							
-							if(entry.getKey().equalsIgnoreCase("businessplandoc")) {
-								resumeDoc.setWhatIsIt("BUSINESSPLANDOC");
+
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					} else {
+						try {
+							File startupsDir = new File("../webapps/startups");
+							if(!startupsDir.exists()){
+								startupsDir.mkdir();
 							}
-							if(entry.getKey().equalsIgnoreCase("pitchDeck")) {
-								resumeDoc.setWhatIsIt("PITCHDECKDOC");
+							File startupcompanyDir = new File(startupsDir.getPath()+"/"+startup.getStartUpName()+"/");
+							if(!startupcompanyDir.exists()){
+								startupcompanyDir.mkdir();
 							}
-							if(entry.getKey().equalsIgnoreCase("otherDocs")) {
-								resumeDoc.setWhatIsIt("OTHERDOC");
-							}
+							Timestamp present = new Timestamp(new java.util.Date().getTime());
+							//String imageFileName = UUID.randomUUID().toString().replaceAll("-", "")+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+							String imageFileName = startup.getStartUpName()+"_"+file.getOriginalFilename();
+							String finalFileName = imageFileName.toString();
+							String finalFile = startupcompanyDir.getCanonicalPath()+"/"+finalFileName;
+							String imageURL = "../webapps/startups/"+startup.getStartUpName()+"/"+finalFileName;
+							byte[] bytes = file.getBytes();
+							BufferedOutputStream stream = 
+									new BufferedOutputStream(new FileOutputStream(new File(startupcompanyDir.getCanonicalPath()+"/"+finalFileName)));
+							stream.write(bytes);
+							stream.close();
 							
+							FileUpload resumeDoc = new FileUpload();
+							resumeDoc.setFilePath(imageURL);
+							resumeDoc.setFileType(file.getContentType());
+							resumeDoc.setWhatIsIt("OTHERDOC");
 							files.add(resumeDoc);
 
 						} catch (Exception e) {
@@ -217,4 +270,5 @@ public class FileOperations implements IFileOperations {
 	public void setStartUpApplicationDao(IStartUpApplicationDao startupApplicationDao) {
 		this.startUpApplicationDao = startupApplicationDao;
 	}
+	
 }

@@ -59,6 +59,9 @@ public class Mentee implements Serializable{
 	@ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
 	private Mentor mentor;
 	
+	@Column
+	private Long startupApplicationId;
+	
 	/*@JoinColumn(name = "applicationId", referencedColumnName="applicationId", insertable=false, updatable=false)
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<StartUpApplication> applications;*/
@@ -193,6 +196,46 @@ public class Mentee implements Serializable{
 	 */
 	public void setMentor(Mentor mentor) {
 		this.mentor = mentor;
+	}
+
+
+	/**
+	 * @return the menteeId
+	 */
+	public long getMenteeId() {
+		return menteeId;
+	}
+
+
+	/**
+	 * @param menteeId the menteeId to set
+	 */
+	public void setMenteeId(long menteeId) {
+		this.menteeId = menteeId;
+	}
+
+
+	/**
+	 * @return the startupApplicationId
+	 */
+	public Long getStartupApplicationId() {
+		return startupApplicationId;
+	}
+
+
+	/**
+	 * @param startupApplicationId the startupApplicationId to set
+	 */
+	public void setStartupApplicationId(Long startupApplicationId) {
+		this.startupApplicationId = startupApplicationId;
+	}
+
+
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	/**

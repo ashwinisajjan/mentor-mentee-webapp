@@ -19,6 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fairfield.chalktalk.dto.MentorDTO;
 import com.fairfield.chalktalk.dto.MentorProfileResponseDTO;
+import com.fairfield.chalktalk.dto.SearchRequestDTO;
+import com.fairfield.chalktalk.dto.UserRegistrationDTO;
 import com.fairfield.chalktalk.service.IFileOperations;
 import com.fairfield.chalktalk.service.IMentorService;
 import com.fairfield.chalktalk.utility.ChacktalkUtil;
@@ -41,6 +43,23 @@ public class MentorController {
 		List<MentorProfileResponseDTO> response = null;
 		try {
 			response = mentorService.getAllMentors();
+		} catch (Exception e) {
+			return new ResponseEntity<List<MentorProfileResponseDTO>>(response, ChacktalkUtil.getHeadersForGetAPI(),HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+		if(response == null) {
+			return new ResponseEntity<List<MentorProfileResponseDTO>>(response, ChacktalkUtil.getHeadersForGetAPI(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+		//Returning successful response.
+		return new ResponseEntity<List<MentorProfileResponseDTO>>(response, ChacktalkUtil.getHeadersForGetAPI(), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/getSearchResults", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+	public ResponseEntity<List<MentorProfileResponseDTO>> getSearchResults(@RequestBody SearchRequestDTO requestdto) {
+		List<MentorProfileResponseDTO> response = null;
+		try {
+			response = mentorService.getMentorSearchResults(requestdto);
 		} catch (Exception e) {
 			return new ResponseEntity<List<MentorProfileResponseDTO>>(response, ChacktalkUtil.getHeadersForGetAPI(),HttpStatus.INTERNAL_SERVER_ERROR);
 		}

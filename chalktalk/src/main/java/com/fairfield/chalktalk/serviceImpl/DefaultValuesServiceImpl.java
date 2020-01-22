@@ -132,7 +132,25 @@ public class DefaultValuesServiceImpl implements IDefaultValuesService{
 		}
 		return companyStageDTOs;
 	}
-
+	
+	/*@Override
+	public List<AddressDTO> getAllMeetupLocations() {
+		List<AddressDTO> addressDto = null;
+		try {
+			addressDto = new ArrayList<>();
+			List<Address> addressEntities = companyStageDao.findAll();
+			for (CompanyStage companyStage : companyStages) {
+				CompanyStageDTO companyStageDTO = 
+						new CompanyStageDTO(companyStage.getCompanyStageId(), companyStage.getStage(), companyStage.getOrder());
+				addressDto.add(companyStageDTO);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return companyStageDTOs;
+	}*/
+	
 	/**
 	 * @param countyDao the countyDao to set
 	 */

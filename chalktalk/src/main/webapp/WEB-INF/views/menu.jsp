@@ -33,12 +33,25 @@
    	 <div id="wrapper">
 	   	 <div class="contactus-col" id="contactus-office">
 	   	 	<p style="text-align: center;"><strong>Office</strong></p>
+	   	 	<p style="color: #fff; font-size: 18px;">Entrepreneurship Foundation Inc. Fairfield, CT 06824</p>
 	   	 </div>
 	   	 <div class="contactus-col" id="contactus-contact">
 	   	 	<p style="text-align: center;"><strong>Contact Us</strong></p>
+	   	 	<ul style="list-style-type: none; text-indent: 0px;padding:0px;">
+              <li style="color: #fff; font-size: 18px;">Phone: +1 (203) 256-3155</li>
+              <li style="color: #fff; font-size: 18px;">Email: Roer@entrepreneurshipfoundation.org</li>
+            </ul>
 	   	 </div>
 	   	 <div class="contactus-col" id="contactus-socialmedia">
 	   	 	<p style="text-align: center;"><strong>Social Media</strong></p>
+	   	 	<ul style="list-style-type: none; text-indent: 0px;padding:0px;">
+	   	 	<li class="tw-icon"
+                style="color: #fff; display: inline-block; float: center; margin-right: 20px; font-size: 24px; text-indent: 0px;">
+                <i class="fa fa-twitter"></i></li>
+              <li class="gl-icon"
+                style="color: #fff; display: inline-block; float: center; margin-right: 20px; font-size: 24px; text-indent: 0px;">
+                <i class="fa fa-linkedin"></i></li>
+            </ul>
 	   	 </div>
    	 </div>
    	 <div id="copyright">

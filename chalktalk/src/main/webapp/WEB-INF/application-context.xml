@@ -22,7 +22,27 @@
     </bean>
     
     <mvc:resources location="/" mapping="/**"></mvc:resources>
-    
+    <!-- gmail configurations -->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="${mail.host}" />
+		<property name="port" value="${mail.port}" />
+		<property name="username" value="${mail.username}" />
+		<property name="password" value="${mail.password}" />
+ 
+		<!-- The name of the property, following JavaBean naming conventions -->
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+				<prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+                <prop key="mail.smtp.socketFactory.port">465</prop>
+			</props>
+		</property>
+   </bean>
+   
+   <!-- mysql database configurations -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
 		<property name="url" value="${jdbc.url}" />
@@ -95,6 +115,12 @@
 	<bean id="stateDao" class="com.fairfield.chalktalk.daoImpl.StateDaoImpl" autowire="byType">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<bean id="userDao" class="com.fairfield.chalktalk.daoImpl.UserDaoImpl" autowire="byType">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="roleDao" class="com.fairfield.chalktalk.daoImpl.RoleDaoImpl" autowire="byType">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 	<!-- application dao beans ends here -->
 	
 	<!-- application service beans creation starts here -->
@@ -103,6 +129,7 @@
 	</bean>
 	<bean id="menteeService" class="com.fairfield.chalktalk.serviceImpl.MenteeServiceImpl" autowire="byType">
 		<property name="startUpApplicationDao" ref="startUpApplicationDao" />
+		<property name="menteeDao" ref="menteeDao" />
 	</bean>
 	<bean id="adminService" class="com.fairfield.chalktalk.serviceImpl.AdminServiceImpl" autowire="byType">
 		<!-- <property name="mentorDAO" ref="mentorDao" /> -->
@@ -117,6 +144,10 @@
 	<bean id="fileOperationService" class="com.fairfield.chalktalk.serviceImpl.FileOperations" autowire="byType">
 		<property name="mentorDao" ref="mentorDao" />
 		<property name="startUpApplicationDao" ref="startUpApplicationDao" />
+	</bean>
+	<bean id="registrationService" class="com.fairfield.chalktalk.serviceImpl.RegistrationServiceImpl" autowire="byType">
+		<property name="userDao" ref="userDao" />
+		<property name="roleDao" ref="roleDao" />
 	</bean>
 	<!-- application service beans creation ends here -->
 	

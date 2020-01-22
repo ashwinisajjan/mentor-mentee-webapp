@@ -16,42 +16,42 @@
 					enctype="multipart/form-data">
         <p>
         <label for="mentor-name" class="form-container-row-col1"><b>Your Name</b></label>
-		<input class="form-container-row-col1" type="text" name="mentorName" required value = "jfg">
+		<input class="form-container-row-col1" type="text" name="mentorName" maxlength="30" required value = "jfg">
 		</p>
 	    
 	    <p>
 	    <label for="email"><b>Email</b></label>
-	    <input type="text" name="emailId" required value = "jfg">
+	    <input id="emailId" type="text" name="emailId" required value = "jfg">
 	    </p>
     
         <p>
 	    <label class="form-container-row-col1" for="phnum"><b>Phone Number</b></label>
-	    <input class="form-container-row-col1" type="text" name="phoneNo" required value = "jfg">
+	    <input id="phoneNo" class="form-container-row-col1" type="text" name="phoneNo" maxlength="15" required value = "jfg">
 	    </p>
 	    
 	    <p>
 	    <label class="form-container-row-col1" for="referredby"><b>Referred By</b></label>
-	    <input class="form-container-row-col1" type="text" name="referredBy" required value = "jfg">
+	    <input class="form-container-row-col1" type="text" name="referredBy" maxlength="30" required value = "jfg">
         </p>
         
         <p>
 	    <label class="form-container-row-col1" for="linkedin"><b>Linkedin</b></label>
-	    <input class="form-container-row-col1" type="text" name="linkedInProfile" required value = "jfg">
+	    <input class="form-container-row-col1" type="text" name="linkedInProfile" maxlength="30" required value = "jfg">
         </p>
         
 	    <p>
 	    <label class="form-container-row-col1" for="addressline1"><b>Address Line 1</b></label>
-	    <input class="form-container-row-col1" type="text" name="addressline1" value = "jfg">
+	    <input class="form-container-row-col1" type="text" name="addressline1" maxlength="30" value = "jfg">
         </p>
         
         <p>
 	    <label class="form-container-row-col1" for="addressline2"><b>Address Line 2</b></label>
-	    <input class="form-container-row-col1" type="text" name="addressline2" value = "jfg">
+	    <input class="form-container-row-col1" type="text" name="addressline2" maxlength="30" value = "jfg">
         </p>
         
 	    <p>
 	    <label class="form-container-row-col1" for="city"><b>City</b></label>
-	    <input class="form-container-row-col1" type="text" name="city" required value = "jfg">
+	    <input class="form-container-row-col1" type="text" name="city" maxlength="30" required value = "jfg">
         </p>
 	    
 	    <p>

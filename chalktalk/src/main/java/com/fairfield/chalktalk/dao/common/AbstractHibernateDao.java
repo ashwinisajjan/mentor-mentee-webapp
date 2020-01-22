@@ -53,7 +53,7 @@ public class AbstractHibernateDao<T extends Serializable> extends AbstractDao<T>
     }
 
     @Override
-    public void create(final T entity) {
+    public void create(final T entity) throws Exception {
     	Session session = null;
     	try {
     		session=sessionFactory.openSession();
@@ -63,12 +63,7 @@ public class AbstractHibernateDao<T extends Serializable> extends AbstractDao<T>
 			session.getTransaction().commit();
     	} catch(Exception e) {
     		session.getTransaction().rollback();
-    		try {
-    			e.printStackTrace();
-				throw new Exception();
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
+    		throw new Exception(e);
 		} finally {
 			session.close();
 		}

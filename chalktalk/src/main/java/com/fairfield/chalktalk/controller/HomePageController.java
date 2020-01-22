@@ -113,4 +113,49 @@ public class HomePageController {
 		
 		return "displaymentorprofiles";
 	}
+	
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	@RequestMapping(value = "/registrationform", method = RequestMethod.GET)
+	public String registrationFormPage() {
+		
+		return "registrationform";
+	}
+	
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	@RequestMapping(value = "/registrationsuccessful", method = RequestMethod.GET)
+	public String registrationSuccessfulPage() {
+		
+		return "registrationsuccessful";
+	}
+	
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	@RequestMapping(value = "/viewStartupapplicationform", method = RequestMethod.GET)
+	public String viewStartupapplicationformPage() {
+		
+		return "viewStartupapplicationform";
+	}
+	
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	@RequestMapping(value = "/logoutpage", method = RequestMethod.GET)
+	public String logoutpage() {
+		
+		return "logoutpage";
+	}
+	
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	@RequestMapping(value = "/forgotpassword", method = RequestMethod.GET)
+	public String forgotPassword() {
+		
+		return "forgotpassword";
+	}
 }

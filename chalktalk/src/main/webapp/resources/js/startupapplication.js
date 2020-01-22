@@ -20,13 +20,32 @@ $(document).ready(function () {
 				 }
 			 }
 	)
+	$('#applicantEmailId').on('change', function(e) {
+		
+		 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(e.currentTarget.value))
+		  {
+		    return (true)
+		  }
+		    alert("You have entered an invalid email address!")
+		    return (false)
+	});
+	
+	$('#applicantPhoneNo').on('change', function(e) {
+		
+		if (/^[0-9]*$/.test(e.currentTarget.value))
+		  {
+		    return (true)
+		  }
+		    alert("You have entered an invalid contact number!")
+		    return (false)
+	});
 	
 	$('#businessPlan, #pitchDeck, #otherDocs').on('change', function(e) {
 		var fileuploaded;
 		if ((file = this.files[0])) {
 			fileuploaded = $( this ).val();
 			var ext = fileuploaded.split('.').pop();
-			   if(ext=="pdf" || ext=="docx" || ext=="doc"){
+			   if(ext=="pdf"){
 				   alert("valid type");
 			   } else {
 				   this.value = null;
